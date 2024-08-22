@@ -3,13 +3,23 @@ import { useNavigate } from "react-router-dom"
 
 export default function RegisterPage(props) {
 
-  const { handleUserAuth, conflictBoolean, handleLoginpageNavigation, navigateToLogin
-  } = props
+  const { handleUserAuth, conflictBoolean } = props
   const [tempUsername, setTempUsername] = useState('')
   const [tempEmail, setTempEmail] = useState('')
   const [tempPass, setTempPass] = useState('')
   const [errbool, setErrbool] = useState(false)
+  const navigate = useNavigate()
 
+  const navigateToLogin = () => {
+    navigate('/login')
+  }
+
+  function handleLoginpageNavigation() {
+    if (conflictBoolean) {
+      return
+    }
+    navigate('/home')
+  }
 
   return (
     <div className='loginContainer'>
@@ -48,7 +58,7 @@ export default function RegisterPage(props) {
         </div>
       )}
       <button className='redirectButton' onClick={() => {
-        navigateToLogin(true)
+        navigateToLogin()
       }}>
         Log In
       </button>

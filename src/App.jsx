@@ -64,21 +64,6 @@ function App() {
       })
   }, [userAuth])
 
-  const handleLoginpageNavigation = () => {
-    if (!conflictBoolean) {
-      navigate('/home')
-      return
-    }
-    return
-  }
-
-  const navigateToLogin = (bool) => {
-    if (bool) {
-      navigate('/login')
-      return
-    }
-    return
-  }
 
   return (
     <>
@@ -87,8 +72,7 @@ function App() {
           <Route path="/" element={<Navigate to="/register" />} />
           <Route path="/register" element={<RegisterPage handleUserAuth={handleUserAuth}
             jwtToken={jwtToken} conflictBoolean={conflictBoolean}
-            handleLoginpageNavigation={handleLoginpageNavigation}
-            navigateToLogin={navigateToLogin} />} />
+          />} />
           <Route path='*' element={<div>Yoo</div>} />
           <Route path="/home" element={<Home jwtToken={jwtToken} />} />
           <Route path="/login" element={<LoginPage />} />
@@ -97,6 +81,6 @@ function App() {
 
     </>
   )
-}
 
+}
 export default App
